@@ -2,45 +2,52 @@ package com;
 
 public class BoardSolution {
 
-    public static boolean isDuplicateCharOnRow(char[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] == '.') {
-                    continue;
-                } else if (board[i][j] >= '1' && board[i][j] <= '9') {
-                    for (int k = j + 1; k < board[i].length; k++) {
-                        if (board[i][j] == board[i][k]){
-                            System.out.println("Повторный элемент найден в строке " + (i + 1) + " \nэлемент = " + board[i][k]);
+
+    public static boolean checkValidNumber(int[] array) {
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                 if (array[i] != -1 && array[j] != -1){
+                        if (array[i] == array[j]) {
+                            System.out.println("element duplicate = " + array[i]);
                             return false;
                         }
 
-                    }
-                } else {
-                    return false;
                 }
+                if (Character.isLetter(array[i]) || Character.isLetter(array[j]))
+                    return false;
             }
         }
 
         return true;
     }
 
-    public static boolean isDuplicateCharOnCol(char[][] board) {
-        for (int j = 0; j < board.length; j++) {
-            for (int i = 0; i < board[j].length; i++) {
-                if (board[j][i] == '.') {
-                    continue;
-                } else if (board[j][i] >= '1' && board[j][i] <= '9') {
-                    for (int k = j + 1; k < board[i].length; k++) {
-                        if (board[j][i] == board[k][i]) {
-                            System.out.print("Повторный элемент найден в столбце " + (j + 1));
-                            System.out.println("элемент = " + board[j][i]);
-                            return false;
-                        }
+    public static boolean isDuplicateCharOnRow(char[][] board) {
 
-                    }
-                } else {
-                    return false;
-                }
+        for (int i = 0; i < board.length; i++) {
+            int[] arrayRows = new int[9];
+            for (int j = 0; j < board[i].length; j++) {
+                arrayRows[j] = Character.getNumericValue(board[i][j]);
+            }
+
+            if(!checkValidNumber(arrayRows)) {
+                return false;
+            }
+        }
+
+        return true; // дубликата в строке нет
+    }
+
+    public static boolean isDuplicateCharOnCol(char[][] board) {
+
+        for (int j = 0; j < board.length; j++) {
+            int[] arrayCols = new int[9];
+            for (int i = 0; i < board[j].length; i++) {
+                arrayCols[i] = Character.getNumericValue(board[i][j]);
+            }
+
+            if(!checkValidNumber(arrayCols)) {
+                return false;
             }
         }
 
@@ -48,15 +55,16 @@ public class BoardSolution {
     }
 
     public static boolean isValidBoard(char[][] board) {
-        boolean flag = false;
+        boolean flag;
         if (isDuplicateCharOnRow(board) && isDuplicateCharOnCol(board)) {
             System.out.print("Matrix is valid:" + " ");
             flag = true;
-        } else {
-            System.out.print("Matrix is not valid:" + " ");
+            return flag;
         }
 
-        return flag;
+        System.out.print("Matrix is not valid:" + " ");
+
+        return false;
     }
 
     public static void main(String[] args) {
@@ -72,27 +80,27 @@ public class BoardSolution {
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
         char[][] board1 = {
-                {'5', '.', '.', '.', '4', '.', '.', '2', '.'},
-                {'5', '.', '.', '1', '9', '5', '.', '.', '.'},
+                {'5', '.', '.', '.', '7', '.', '.', '.', '.'},
+                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
                 {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-                {'8', '.', '.', '.', '6', ',', '.', '.', '3'},
+                {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
                 {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
                 {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
                 {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
                 {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-                {'.', '.', '.', '.', '8', '5', '.', '7', '9'}};
+                {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
         char[][] board2 = {
                 {'5', '.', '.', '.', '7', '.', '.', '.', '.'},
                 {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-                {'.', '9', '.', '.', '.', '8', '.', '6', '.'},
+                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
                 {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
                 {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-                {'.', '.', '2', '.', '2', '.', '.', '.', '6'},
+                {'7', '.', '.', '.', '2', '.', '.', '6', '6'},
                 {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-                {'7', '.', '.', '4', '1', '9', '.', '.', '5'},
+                {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
-        System.out.println(isDuplicateCharOnRow(board1));
+        System.out.println(isValidBoard(board2));
     }
 }
