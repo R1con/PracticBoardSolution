@@ -2,7 +2,6 @@ package com;
 
 public class BoardSolution {
 
-
     public static boolean checkValidNumber(int[] array) {
 
         for (int i = 0; i < array.length; i++) {
@@ -12,9 +11,8 @@ public class BoardSolution {
                             System.out.println("element duplicate = " + array[i]);
                             return false;
                         }
-
                 }
-                if (Character.isLetter(array[i]) || Character.isLetter(array[j]))
+                if (array[i] < 1 || array[i] > 9)
                     return false;
             }
         }
@@ -22,7 +20,7 @@ public class BoardSolution {
         return true;
     }
 
-    public static boolean isDuplicateCharOnRow(char[][] board) {
+    public static boolean isNotDuplicateCharOnRow(char[][] board) {
 
         for (int i = 0; i < board.length; i++) {
             int[] arrayRows = new int[9];
@@ -38,7 +36,7 @@ public class BoardSolution {
         return true; // дубликата в строке нет
     }
 
-    public static boolean isDuplicateCharOnCol(char[][] board) {
+    public static boolean isNotDuplicateCharOnCol(char[][] board) {
 
         for (int j = 0; j < board.length; j++) {
             int[] arrayCols = new int[9];
@@ -56,7 +54,7 @@ public class BoardSolution {
 
     public static boolean isValidBoard(char[][] board) {
         boolean flag;
-        if (isDuplicateCharOnRow(board) && isDuplicateCharOnCol(board)) {
+        if (isNotDuplicateCharOnRow(board) && isNotDuplicateCharOnCol(board)) {
             System.out.print("Matrix is valid:" + " ");
             flag = true;
             return flag;
@@ -91,12 +89,12 @@ public class BoardSolution {
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
         char[][] board2 = {
-                {'5', '.', '.', '.', '7', '.', '.', '.', '.'},
+                {'5', 'а', '.', '.', '7', '.', '.', '.', '.'},
                 {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
                 {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
                 {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
                 {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-                {'7', '.', '.', '.', '2', '.', '.', '6', '6'},
+                {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
                 {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
                 {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
