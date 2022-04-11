@@ -41,15 +41,6 @@ public class BoardSolution {
         return true;
     }
 
-    public static boolean checkValidNumberWithHashSet() {
-
-        return true;
-    }
-
-
-
-
-
     public static boolean isNotDuplicateCharOnRow(char[][] board) {
 
 
