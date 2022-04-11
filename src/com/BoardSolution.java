@@ -27,14 +27,19 @@ public class BoardSolution {
             int[] arrayRows = new int[9];
             int[] arrayCol = new int[9];
             for (int j = 0; j < board[i].length; j++) {
+                if (Character.isLetter(board[i][j]))
+                    return false;
+
                 arrayRows[j] = Character.getNumericValue(board[i][j]);
                 arrayCol[j] = Character.getNumericValue(board[j][i]);
+
+
             }
 
-            if (!checkValidValue(arrayRows) || !checkValidValue(arrayCol)) {
-                System.out.print("Matrix is not valid:" + " ");
-                return false;
-            }
+                if (!checkValidValue(arrayRows) || !checkValidValue(arrayCol)) {
+                    System.out.print("Matrix is not valid:" + " ");
+                    return false;
+                }
         }
 
         System.out.print("Matrix is  valid:" + " ");
@@ -55,7 +60,7 @@ public class BoardSolution {
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
         char[][] board1 = {
-                {'5', '.', '1', '.', '7', '.', '5', '.', '.'},
+                {'5', '.', '1', '.', '7', '.', '.', '.', '.'},
                 {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
                 {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
                 {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
@@ -75,17 +80,6 @@ public class BoardSolution {
                 {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
                 {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
-
-        char[][] board3 = {
-                {'.', '.', '.', '.', '5', '.', '.', '1', '.'},
-                {'.', '4', '.', '3', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '.', '3', '.', '.', '1'},
-                {'8', '.', '.', '.', '.', '.', '.', '2', '.'},
-                {'.', '.', '2', '.', '7', '.', '.', '.', '.'},
-                {'.', '1', '5', '.', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '.', '2', '.', '.', '.'},
-                {'.', '2', '.', '9', '.', '.', '.', '.', '.'},
-                {'.', '.', '4', '.', '.', '.', '.', '.', '.'}};
 
         System.out.println(isValidBoard(board1));
     }
