@@ -37,7 +37,7 @@ public class BoardSolution {
                         System.out.println("Duplicate on col = " + (j + 1) + ", element = " + board[i][j]);
                         return false;
                     } else {
-                        setElementCol [Character.digit(board[i][j], 10) - 1] = true;
+                        setElementCol[Character.digit(board[i][j], 10) - 1] = true;
                     }
                 } else if (board[i][j] != '.') {
                     System.out.println("Not valid symbol = " + board[i][j] + ", in col = " + j);
@@ -50,10 +50,11 @@ public class BoardSolution {
     }
 
     public static boolean isValidBoardWithHashSet(char[][] board) {
+
         Set<Integer> rowSet = new HashSet<>();
-        for (char[] rows : board) {
+        for (char[] i : board) {
             rowSet.clear();
-            for (char j : rows) {
+            for (char j : i) {
                 if (j != '.') {
                     int val = j;
                     if (rowSet.contains(val)) {
@@ -65,7 +66,6 @@ public class BoardSolution {
             }
         }
 
-        //System.out.println("Rows validated");
         Set<Integer> colSet = new HashSet<>();
         for (int i = 0; i < 9; i++) {
             colSet.clear();
@@ -133,8 +133,6 @@ public class BoardSolution {
                 {'7', '.', '.', '4', '1', '9', '.', '.', '5'},
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
-
         System.out.println(isValidBoardWithHashSet(board));
-
     }
 }
