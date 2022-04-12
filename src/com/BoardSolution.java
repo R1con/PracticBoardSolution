@@ -51,26 +51,16 @@ public class BoardSolution {
 
     public static boolean isValidBoardWithHashSet(char[][] board) {
 
-//        for (int row = 0; row < board.length; row++) {
-//            Set<Integer> rowSet = new HashSet<>();
-//            for (int column = 0; column < board[row].length; column++) {
-//                if (board[row][column] != '.' && !rowSet.add(Character.digit(board[row][column], 10))) {
-//                    System.out.print("Matrix is not valid: ");
-//                    return false;
-//                }
-//            }
-//        }
-
         for (int row = 0; row < board.length; row++) {
             Set<Integer> colSet = new HashSet<>();
             Set<Integer> rowSet = new HashSet<>();
             for (int column = 0; column < board[row].length; column++) {
-                if (board[column][row] != '.' && colSet.contains(Character.digit(board[column][row], 10))
-                || board[row][column] != '.' && !rowSet.add(Character.digit(board[row][column], 10))) {
+                if (board[column][row] != '.' && !colSet.add(Character.digit(board[column][row], 10))
+                        || board[row][column] != '.' && !rowSet.add(Character.digit(board[row][column], 10))) {
                     System.out.print("Matrix is not valid: ");
                     return false;
                 }
-                colSet.add(Character.digit(board[column][row], 10));
+
             }
         }
 
@@ -123,9 +113,12 @@ public class BoardSolution {
                 {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
                 {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
                 {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-                {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+                {'7', '.', '.', '4', '1', '9', '.', '.', '5'},
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
-        System.out.println(isValidBoardWithHashSet(board2));
+        long start = System.nanoTime();
+        System.out.println(isValidBoardWithHashSet(board));
+        long end = System.nanoTime();
+        System.out.println(end - start);
     }
 }
