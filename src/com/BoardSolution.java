@@ -68,7 +68,7 @@ class BoardSolution {
         return true;
     }
 
-    public boolean isValidBoard(char[][] board) {
+    public boolean isValidBoardWithArray(char[][] board) {
 
         boolean flag;
         if (!isNotDuplicateOnRow(board) || !isNotDuplicateOnCol(board)) {

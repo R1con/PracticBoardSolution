@@ -38,7 +38,7 @@ public class Main {
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
         solution.isValidBoardWithHashSet(board);
-        solution.isValidBoard(board1);
+        solution.isValidBoardWithArray(board1);
         solution.isValidBoardWithHashSet(board2);
     }
 }
