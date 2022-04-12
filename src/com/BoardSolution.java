@@ -51,24 +51,20 @@ public class BoardSolution {
 
     public static boolean isValidBoardWithHashSet(char[][] board) {
 
-        Set<Integer> rowSet = new HashSet<>();
         for (char[] i : board) {
-            rowSet.clear();
+            Set<Integer> rowSet = new HashSet<>();
             for (char j : i) {
-                if (j != '.') {
-                    int val = j;
-                    if (rowSet.contains(val)) {
+                if (j != '.' && rowSet.contains(Character.digit(j, 10))) {
                         System.out.print("Matrix is not valid: ");
                         return false;
                     }
-                    rowSet.add(val);
+                    rowSet.add(Character.digit(j, 10));
                 }
             }
-        }
 
-        Set<Integer> colSet = new HashSet<>();
+        //Set<Integer> colSet = new HashSet<>();
         for (int i = 0; i < 9; i++) {
-            colSet.clear();
+            Set<Integer> colSet = new HashSet<>();
             for (int j = 0; j < 9; j++) {
                 if (board[j][i] != '.') {
                     int value = board[j][i];
@@ -112,7 +108,7 @@ public class BoardSolution {
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
         char[][] board1 = {
-                {'5', '.', '1', '.', '7', '.', '/', '.', '.'},
+                {'5', '.', '1', '.', '7', '.', '5', '.', '.'},
                 {'.', '.', '.', '1', '9', '5', '.', '.', '.'},
                 {'.', '9', '8', '.', '6', '.', '.', '6', '.'},
                 {'8', '.', '.', '.', '.', '.', '.', '.', '3'},
@@ -133,6 +129,6 @@ public class BoardSolution {
                 {'7', '.', '.', '4', '1', '9', '.', '.', '5'},
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
-        System.out.println(isValidBoardWithHashSet(board));
+        System.out.println(isValidBoardWithHashSet(board2));
     }
 }
