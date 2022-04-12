@@ -1,5 +1,8 @@
 package com;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class BoardSolution {
 
     public static boolean isNotDuplicateOnRow(char[][] board) {
@@ -45,6 +48,43 @@ public class BoardSolution {
 
         return true;
     }
+
+    public static boolean isValidBoardWithHashSet(char[][] board) {
+        Set<Integer> rowSet = new HashSet<>();
+        for (char[] rows : board) {
+            rowSet.clear();
+            for (char j : rows) {
+                if (j != '.') {
+                    int val = j;
+                    if (rowSet.contains(val)) {
+                        System.out.print("Matrix is not valid: ");
+                        return false;
+                    }
+                    rowSet.add(val);
+                }
+            }
+        }
+
+        //System.out.println("Rows validated");
+        Set<Integer> colSet = new HashSet<>();
+        for (int i = 0; i < 9; i++) {
+            colSet.clear();
+            for (int j = 0; j < 9; j++) {
+                if (board[j][i] != '.') {
+                    int value = board[j][i];
+                    if (colSet.contains(value)) {
+                        System.out.print("Matrix is not valid: ");
+                        return false;
+                    }
+                    colSet.add(value);
+                }
+            }
+        }
+
+        System.out.print("Matrix is  valid: ");
+        return true;
+    }
+
 
     public static boolean isValidBoard(char[][] board) {
 
@@ -94,7 +134,7 @@ public class BoardSolution {
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
 
-        System.out.println(isValidBoard(board2));
+        System.out.println(isValidBoardWithHashSet(board));
 
     }
 }
