@@ -116,9 +116,7 @@ public class BoardSolution {
                 {'7', '.', '.', '4', '1', '9', '.', '.', '5'},
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
-        long start = System.nanoTime();
         System.out.println(isValidBoardWithHashSet(board));
-        long end = System.nanoTime();
-        System.out.println(end - start);
+
     }
 }
