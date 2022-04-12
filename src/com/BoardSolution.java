@@ -3,9 +3,9 @@ package com;
 import java.util.HashSet;
 import java.util.Set;
 
-public class BoardSolution {
+class BoardSolution {
 
-    public static boolean isNotDuplicateOnRow(char[][] board) {
+    private boolean isNotDuplicateOnRow(char[][] board) {
 
         for (int i = 0; i < board.length; i++) {
             boolean[] setElementRow = new boolean[9];
@@ -27,7 +27,7 @@ public class BoardSolution {
         return true;
     }
 
-    public static boolean isNotDuplicateOnCol(char[][] board) {
+    private boolean isNotDuplicateOnCol(char[][] board) {
 
         for (int j = 0; j < board.length; j++) {
             boolean[] setElementCol = new boolean[9];
@@ -49,7 +49,7 @@ public class BoardSolution {
         return true;
     }
 
-    public static boolean isValidBoardWithHashSet(char[][] board) {
+    public boolean isValidBoardWithHashSet(char[][] board) {
 
         for (int row = 0; row < board.length; row++) {
             Set<Integer> colSet = new HashSet<>();
@@ -68,55 +68,16 @@ public class BoardSolution {
         return true;
     }
 
+    public boolean isValidBoard(char[][] board) {
 
-    public static boolean isValidBoard(char[][] board) {
-
+        boolean flag;
         if (!isNotDuplicateOnRow(board) || !isNotDuplicateOnCol(board)) {
             System.out.print("Matrix is  not valid:" + " ");
-            return false;
+            flag = false;
+            return flag;
         }
 
         System.out.print("Matrix is  valid:" + " ");
         return true;
-    }
-
-
-    public static void main(String[] args) {
-
-        char[][] board = {
-                {'5', '.', '1', '.', '7', '.', '.', '.', '.'},
-                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-                {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
-                {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-                {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-                {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-                {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-                {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
-
-        char[][] board1 = {
-                {'5', '.', '1', '.', '7', '.', '5', '.', '.'},
-                {'.', '.', '.', '1', '9', '5', '.', '.', '.'},
-                {'.', '9', '8', '.', '6', '9', '.', '6', '.'},
-                {'8', '.', '.', '.', '.', '.', '.', '.', '3'},
-                {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-                {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-                {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-                {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-                {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
-
-        char[][] board2 = {
-                {'5', '.', '1', '.', '7', '.', '.', '.', '.'},
-                {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-                {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-                {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
-                {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-                {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-                {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-                {'7', '.', '.', '4', '1', '9', '.', '.', '5'},
-                {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
-
-        System.out.println(isValidBoardWithHashSet(board));
-
     }
 }
